@@ -1,40 +1,49 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './Login.css';
+import Input from "@mui/joy/Input";
+import { Box, Button, Container } from "@mui/joy";
+import { Email, Key } from "@mui/icons-material";
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginPage = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email, password);
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <main>
+      <Container>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <Box component="section" sx={{ p: 2 }}>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              startDecorator={<Email />}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Input>
 
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <Input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              startDecorator={<Key />}
+              onChange={(e) => setPassword(e.target.value)}
+            ></Input>
 
-        <button type="submit">Entrar</button>
-      </form>
-
-      <Link to="/cadastro-usuario" className="createAccount">Criar Conta</Link>
-    </div>
+            <Button type="submit">Entrar</Button>
+          </Box>
+        </form>
+      </Container>
+      <Link to="/cadastro-usuario" className="createAccount">
+        Criar Conta
+      </Link>
+    </main>
   );
 };
 
-export default Login
+export default LoginPage;

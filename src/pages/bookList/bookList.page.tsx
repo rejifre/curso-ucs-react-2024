@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import IBook from "../../interfaces/book.interface";
 
 interface IBookListProps {
@@ -8,6 +8,10 @@ interface IBookListProps {
 export const BookList: React.FC<IBookListProps> = ({
   books,
 }: IBookListProps) => {
+
+
+  /**useEffect*/
+
   if (books.length === 0) {
     return (
       <div>
