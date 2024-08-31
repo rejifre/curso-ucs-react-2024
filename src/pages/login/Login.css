@@ -1,0 +1,50 @@
+/** TODO REVIEW THIS*/
+
+h1 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f05a7e;
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+form input {
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  border-color: azure;
+  height: 30px;
+  width: 300px;
+  padding: 0.5rem 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-style: none;
+}
+
+form button {
+  width: 100px;
+  height: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #125B9A;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.createAccount {
+    color: #0B8494;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

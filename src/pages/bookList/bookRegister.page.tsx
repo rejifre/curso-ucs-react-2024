@@ -37,7 +37,7 @@ export const BookRegister = () => {
           onChange={(e) => setAuthor(e.target.value)}
         />
 
-        <button type="submit">Entrar</button>
+        <button type="submit">Cadastrar</button>
       </form>
       
     </div>

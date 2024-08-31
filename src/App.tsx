@@ -6,6 +6,7 @@ import { BookList } from "./pages/bookList/bookList.page";
 import IBook from "./interfaces/book.interface";
 import Login from "./pages/login/login.page";
 import { BookRegister } from "./pages/bookList/bookRegister.page";
+import UserRegister from "./pages/userRegister/userRegister.page";
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
         <Route path="/lista-livros" element={<BookList books={books} />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/cadastro-livros" element={<BookRegister/>} />
+        <Route path="/cadastro-usuario" element={<UserRegister/>} />
       </Routes>
     </Router>
   );
