@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Input from "@mui/joy/Input";
 import { Box, Button, Container } from "@mui/joy";
 import { Email, Key } from "@mui/icons-material";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
@@ -11,6 +13,17 @@ const LoginPage = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email, password);
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredencial) => {
+        const user = userCredencial.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   return (

@@ -1,8 +1,21 @@
 import { Email, InfoOutlined, Key, Password } from "@mui/icons-material";
 import { Container, FormHelperText, Input } from "@mui/joy";
 import React, { useState } from "react";
+import useForm from "../../hooks/UseForm";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
-const UserRegister = () => {
+const validate = () => {};
+
+export const UserRegister = () => {
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  };
+
   /** Apenas para exemplo. */
   const [state, setState] = useState({
     name: "",
@@ -16,10 +29,37 @@ const UserRegister = () => {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
 
+  //const {values, errors, handleInput, resetForm} = useForm(initialValues, true, validate)
+
+  const handleCreateData = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first: "Ada",
+        last: "Lovelace",
+        born: 1815,
+      }).catch((error) => {
+        console.log("Document NOT written");
+      });
+    } catch {
+      console.log("Document NOT written");
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //console.log(userName, email, password);
     console.log(state);
+
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, state.email, state.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        handleCreateData()
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   const handleValidatePassword = (value: string) => {
@@ -60,10 +100,9 @@ const UserRegister = () => {
             error={errorPassword}
             onChange={(e) => handleValidatePassword(e.target.value)}
           ></Input>
-          {errorPassword ?
-          <span style={{ color: "red" }}> As senhas não são iguais. </span> : null }
-
-          
+          {errorPassword ? (
+            <span style={{ color: "red" }}> As senhas não são iguais. </span>
+          ) : null}
 
           <button type="submit">Cadastrar</button>
         </form>
@@ -71,5 +110,3 @@ const UserRegister = () => {
     </main>
   );
 };
-
-export default UserRegister;
