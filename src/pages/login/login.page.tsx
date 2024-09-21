@@ -4,7 +4,6 @@ import Input from "@mui/joy/Input";
 import { Box, Button, Container } from "@mui/joy";
 import { Email, Key } from "@mui/icons-material";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
