@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import IBook from "../../interfaces/book.interface";
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-import { error } from "console";
 
-interface IBookListProps {
-  books: Array<IBook>;
-}
+// interface IBookListProps {
+//   books: Array<IBook>;
+// }
 
 export const BookList = () => {
   const [books, setBooks] = useState<IBook[]>();
@@ -22,7 +21,7 @@ export const BookList = () => {
   //precisa cuidar quando usar isso para não ficar eternamente.
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [fetchBooks]);
 
 
   if (books?.length === 0) {

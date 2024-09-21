@@ -5,15 +5,15 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
-const validate = () => {};
+//const validate = () => {};
 
 export const UserRegister = () => {
-  const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
-  };
+  // const initialValues = {
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   passwordConfirm: "",
+  // };
 
   /** Apenas para exemplo. */
   const [state, setState] = useState({
@@ -32,7 +32,7 @@ export const UserRegister = () => {
 
   const handleCreateData = async () => {
     try {
-      const docRef = await addDoc(collection(db, "users"), {
+      await addDoc(collection(db, "users"), {
         first: "Ada",
         last: "Lovelace",
         born: 1815,
@@ -53,6 +53,7 @@ export const UserRegister = () => {
     createUserWithEmailAndPassword(auth, state.email, state.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user.email)
         handleCreateData()
       })
       .catch((error) => {
