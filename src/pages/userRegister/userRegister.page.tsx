@@ -1,7 +1,6 @@
-import { Email, InfoOutlined, Key, Password } from "@mui/icons-material";
-import { Container, FormHelperText, Input } from "@mui/joy";
+import { Email, Key } from "@mui/icons-material";
+import { Container, Input } from "@mui/joy";
 import React, { useState } from "react";
-import useForm from "../../hooks/UseForm";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebaseConfig";

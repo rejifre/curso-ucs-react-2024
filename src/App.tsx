@@ -1,11 +1,11 @@
 import "./App.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./pages/home/home.page";
-import { BookList } from "./pages/bookList/bookList.page";
-import { BookRegister } from "./pages/bookList/bookRegister.page";
 import LoginPage from "./pages/Login/Login.page";
 import { UserRegister } from "./pages/UserRegister/UserRegister.page";
 import 'firebase/firestore'
+import { BookRegister } from "./pages/bookList/BookRegister.page";
+import { BookList } from "./pages/bookList/BookList.page";
 
 
 function App() {
